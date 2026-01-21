@@ -3,6 +3,14 @@
 import { useChat } from '@ai-sdk/react';
 import { useState } from 'react';
 
+type AIInput = {
+  query: string;
+}
+
+type AIOutput = {
+  rows: string[];
+}
+
 export default function Chat() {
   const [input, setInput] = useState('');
   const { messages, sendMessage } = useChat();
@@ -30,14 +38,14 @@ export default function Chat() {
                     <div className='font-semibold text-blue-700 dark:text-blue-300 mb-1'>
                       🔍Database Query
                     </div>
-                    {part.input?.query &&(
+                    {(part.input as unknown as AIInput)?.query &&(
                       <pre className='text-xs bg-white dark:bg-zinc-900 p-2 rounded mb-2 overflow-x-auto'>
-                        {part.input.query}
+                        {(part.input as unknown as AIInput).query}
                       </pre>
                     )}
-                    {part.state === 'output-available' && part.output && (
+                    {part.state === 'output-available' && (part.output as unknown as AIOutput) && (
                       <div className='text-sm text-green-700 dark:text-green-300'>
-                        Returned {part.output.rows?.length || 0} rows
+                        Returned {(part.output as unknown as AIOutput).rows?.length || 0} rows
                       </div>
                     )}
 
