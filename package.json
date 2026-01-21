@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "db:seed": "tsx src/app/db/db.seed.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -11,10 +12,14 @@
   "dependencies": {
     "@ai-sdk/groq": "^3.0.11",
     "@ai-sdk/react": "^3.0.42",
+    "@neondatabase/serverless": "^1.0.2",
     "ai": "^6.0.40",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
     "next": "16.1.3",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -22,6 +27,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^9",
     "eslint-config-next": "16.1.3",
     "tailwindcss": "^4",
